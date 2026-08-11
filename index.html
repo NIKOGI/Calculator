@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="displayHolder">
+    <div class="display">
+        
+    </div>
+    </div>
+
+    <div class="buttonHolder">
+        
+    <div class="numHolder">
+        <button class="num">0</button>
+        <button class="num">1</button>
+        <button class="num">2</button>
+        <button class="num">3</button>
+        <button class="num">4</button>
+        <button class="num">5</button>
+        <button class="num">6</button>
+        <button class="num">7</button>
+        <button class="num">8</button>
+        <button class="num">9</button>
+    </div>
+
+    <div class="operatorHolder">
+        <button class = "operator">*</button>
+        <button class = "operator">/</button>
+        <button class = "operator">+</button>
+        <button class = "operator">-</button>
+        <button class = "operator">=</button>
+    </div>
+
+    </div>
+</div>
+<script>
+let num1;
+let num2; 
+let operator;
+
+const add = function(num1, num2) {
+  return num1 + num2;
+};
+
+const subtract = function(num1, num2) {
+  return num1 - num2;	
+};
+
+const multiply = function(num1, num2) {
+  return num1 * num2;
+};
+
+const divide = function (num1, num2)
+{
+    return num1 / num2;
+}
+
+function operate(num1, num2, operator)
+{
+if(operator === "*")
+{
+    return multiply(num1, num2);
+}
+else if(operator === "/")
+{
+    return divide(num1, num2);
+}
+else if(operator === "+")
+{
+    return add(num1, num2);
+}
+else if(operator === "-")
+{
+    return subtract(num1, num2);
+}
+}
+
+/*console.log(operate(1.5,2, "/"))
+console.log(divide(10, 5));
+console.log(multiply(10, 5));
+console.log(add(10, 5));
+console.log(subtract(10, 5));*/
+</script>
+</body>
+</html>
