@@ -44,7 +44,9 @@
 
 let buttons = document.querySelectorAll("button");
 let display = document.querySelector(".display");
-let num1;
+let num1Check = false;
+let num2Check = false;
+let num1 = "";
 let num2; 
 let operator;
 
@@ -88,7 +90,17 @@ else if(operator === "-")
 buttons.forEach((button) =>
 {
     button.addEventListener("click", () => {
-        display.innerText = button.innerText;
+    if(button.textContent != "*")
+    {
+        display.innerText += button.innerText;
+        num1 += button.innerText;
+        console.log(num1);
+    }
+    else if(button.textContent === "*")
+    {
+        parseInt(num1);
+        console.log(num1);
+    }
     })
 })
 /*console.log(operate(1.5,2, "/"))
