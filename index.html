@@ -10,12 +10,12 @@
 <div class="container">
     <div class="displayHolder">
     <div class="display">
-        
+    
     </div>
     </div>
 
     <div class="buttonHolder">
-        
+
     <div class="numHolder">
         <button class="num">0</button>
         <button class="num">1</button>
@@ -35,11 +35,15 @@
         <button class = "operator">+</button>
         <button class = "operator">-</button>
         <button class = "operator">=</button>
+        <button class = "operator">clear</button>
     </div>
 
     </div>
 </div>
 <script>
+
+let buttons = document.querySelectorAll("button");
+let display = document.querySelector(".display");
 let num1;
 let num2; 
 let operator;
@@ -81,6 +85,12 @@ else if(operator === "-")
 }
 }
 
+buttons.forEach((button) =>
+{
+    button.addEventListener("click", () => {
+        display.innerText = button.innerText;
+    })
+})
 /*console.log(operate(1.5,2, "/"))
 console.log(divide(10, 5));
 console.log(multiply(10, 5));
