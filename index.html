@@ -47,8 +47,9 @@ let display = document.querySelector(".display");
 let num1Check = false;
 let num2Check = false;
 let num1 = "";
-let num2; 
-let operator;
+let num2 = ""; 
+let operator = "";
+
 
 const add = function(num1, num2) {
   return num1 + num2;
@@ -90,17 +91,30 @@ else if(operator === "-")
 buttons.forEach((button) =>
 {
     button.addEventListener("click", () => {
-    if(button.textContent != "*")
+    if(button.textContent !== "*" && button.textContent !== "+" && button.textContent !== "-" && button.textContent !== "/" && !num1Check)
     {
         display.innerText += button.innerText;
         num1 += button.innerText;
-        console.log(num1);
     }
-    else if(button.textContent === "*")
+    else if(button.textContent === "*" || button.textContent === "+" || button.textContent === "-" || button.textContent === "/")
     {
         parseInt(num1);
-        console.log(num1);
+        display.innerText += button.innerText;
+        operator += button.innerText;
+        num1Check = true;
     }
+    else if(num1Check && !num2Check)
+    {
+        display.innerText += button.innerText;
+        num2 += button.innerText;
+        num2Check = true;
+        console.log(num2);
+    }
+    else if(button.textContent === "=")
+    {
+        display.innerText += operate(num1, num2, operator);
+    }
+
     })
 })
 /*console.log(operate(1.5,2, "/"))
