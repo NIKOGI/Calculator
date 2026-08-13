@@ -91,30 +91,32 @@ else if(operator === "-")
 buttons.forEach((button) =>
 {
     button.addEventListener("click", () => {
-    if(button.textContent !== "*" && button.textContent !== "+" && button.textContent !== "-" && button.textContent !== "/" && !num1Check)
+    if(button.textContent === "=")
+    {
+        let answer = operate(parseInt(num1), parseInt(num2), operator);
+        display.innerText = answer;
+        num1 = answer;
+        console.log(num1);
+        num2 = "";
+        num2Check = true;
+    }
+    else if(button.textContent !== "*" && button.textContent !== "+" && button.textContent !== "-" && button.textContent !== "/" && !num1Check)
     {
         display.innerText += button.innerText;
         num1 += button.innerText;
     }
     else if(button.textContent === "*" || button.textContent === "+" || button.textContent === "-" || button.textContent === "/")
     {
-        parseInt(num1);
         display.innerText += button.innerText;
         operator += button.innerText;
         num1Check = true;
+        num2Check = false;
     }
-    else if(num1Check && !num2Check)
+    else if(button.textContent !== "=" && !num2Check)
     {
         display.innerText += button.innerText;
         num2 += button.innerText;
-        num2Check = true;
-        console.log(num2);
     }
-    else if(button.textContent === "=")
-    {
-        display.innerText += operate(num1, num2, operator);
-    }
-
     })
 })
 /*console.log(operate(1.5,2, "/"))
