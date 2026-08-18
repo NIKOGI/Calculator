@@ -100,8 +100,6 @@ buttons.forEach((button) =>
         num2 = "";
         operator = "";
         num2Check = true;
-        console.log(num1Check);
-        console.log(num2Check);
     }
     else if(button.textContent === "=" && num1Check && !num2Check)
     {
@@ -113,24 +111,35 @@ buttons.forEach((button) =>
         num2Check = true;
         console.log("pressed");
     }
-    else if(button.textContent !== "*" && button.textContent !== "+" && button.textContent !== "-" && button.textContent !== "/"  && button.textContent !== "=" && !num1Check)
+    else if(button.textContent !== "*" && button.textContent !== "+" && button.textContent !== "-" && button.textContent !== "/"  && button.textContent !== "=" && button.textContent !== "clear" && !num1Check)
     {
         display.innerText += button.innerText;
         num1 += button.innerText;
     }
-    else if(button.textContent === "*" || button.textContent === "+" || button.textContent === "-" || button.textContent === "/")
+    else if(button.textContent === "*" && operator.length != 1|| button.textContent === "+" && operator.length != 1|| button.textContent === "-" && operator.length != 1|| button.textContent === "/" && operator.length != 1)
     {
         display.innerText += button.innerText;
         operator += button.innerText;
         num1Check = true;
         num2Check = false;
+        console.log(operator)
+        console.log(operator.length);
     }
     else if(button.textContent !== "=" && !num2Check && num1)
     {
         display.innerText += button.innerText;
         num2 += button.innerText;
     }
-   
+    
+    if(button.textContent === "clear")
+    {
+        display.innerText = "";
+        num1 = "";
+        num2 = "";
+        operator = "";
+        num2Check = true;
+        num1Check = false;
+    }
     })
 })
 
