@@ -100,7 +100,7 @@ buttons.forEach((button) =>
     }
     else
     {
-       let answer = operate(parseInt(num1), parseInt(num1), operator);
+       let answer = Math.round(operate(parseFloat(num1), parseFloat(num1), operator) * 100) / 100;
         display.innerText = answer;
         console.log("pressed2")
         num1 = answer;
@@ -118,7 +118,7 @@ buttons.forEach((button) =>
     }
     else
     {
-        let answer = operate(parseInt(num1), parseInt(num2), operator);
+        let answer = Math.round(operate(parseFloat(num1), parseFloat(num2), operator) * 100) / 100;
         display.innerText = answer;
         num1 = answer;
         num2 = "";
