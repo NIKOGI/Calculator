@@ -91,7 +91,16 @@ else if(operator === "-")
 buttons.forEach((button) =>
 {
     button.addEventListener("click", () => {
-    if(button.textContent === "=")
+    if(button.textContent === "=" && num2 === "" && num1Check && operator !== "")
+    {
+        let answer = operate(parseInt(num1), parseInt(num1), operator);
+        display.innerText = answer;
+        console.log("pressed2")
+        num1 = answer;
+        num2 = "";
+        operator = "";
+    }
+    else if(button.textContent === "=" && num1Check && !num2Check)
     {
         let answer = operate(parseInt(num1), parseInt(num2), operator);
         display.innerText = answer;
@@ -99,8 +108,9 @@ buttons.forEach((button) =>
         num2 = "";
         operator = "";
         num2Check = true;
+        console.log("pressed");
     }
-    else if(button.textContent !== "*" && button.textContent !== "+" && button.textContent !== "-" && button.textContent !== "/" && !num1Check)
+    else if(button.textContent !== "*" && button.textContent !== "+" && button.textContent !== "-" && button.textContent !== "/"  && button.textContent !== "=" && !num1Check)
     {
         display.innerText += button.innerText;
         num1 += button.innerText;
@@ -117,13 +127,11 @@ buttons.forEach((button) =>
         display.innerText += button.innerText;
         num2 += button.innerText;
     }
+   
     })
 })
-/*console.log(operate(1.5,2, "/"))
-console.log(divide(10, 5));
-console.log(multiply(10, 5));
-console.log(add(10, 5));
-console.log(subtract(10, 5));*/
+
+
 </script>
 </body>
 </html>
