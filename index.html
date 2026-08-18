@@ -96,8 +96,8 @@ buttons.forEach((button) =>
         let answer = operate(parseInt(num1), parseInt(num2), operator);
         display.innerText = answer;
         num1 = answer;
-        console.log(num1);
         num2 = "";
+        operator = "";
         num2Check = true;
     }
     else if(button.textContent !== "*" && button.textContent !== "+" && button.textContent !== "-" && button.textContent !== "/" && !num1Check)
@@ -112,7 +112,7 @@ buttons.forEach((button) =>
         num1Check = true;
         num2Check = false;
     }
-    else if(button.textContent !== "=" && !num2Check)
+    else if(button.textContent !== "=" && !num2Check && num1)
     {
         display.innerText += button.innerText;
         num2 += button.innerText;
