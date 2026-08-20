@@ -49,6 +49,7 @@ let num2Check = false;
 let num1 = "";
 let num2 = ""; 
 let operator = "";
+let answer = "";
 
 
 const add = function(num1, num2) {
@@ -100,7 +101,7 @@ buttons.forEach((button) =>
     }
     else
     {
-       let answer = Math.round(operate(parseFloat(num1), parseFloat(num1), operator) * 100) / 100;
+        answer = Math.round(operate(parseFloat(num1), parseFloat(num1), operator) * 100) / 100;
         display.innerText = answer;
         console.log("pressed2")
         num1 = answer;
@@ -118,7 +119,7 @@ buttons.forEach((button) =>
     }
     else
     {
-        let answer = Math.round(operate(parseFloat(num1), parseFloat(num2), operator) * 100) / 100;
+        answer = Math.round(operate(parseFloat(num1), parseFloat(num2), operator) * 100) / 100;
         display.innerText = answer;
         num1 = answer;
         num2 = "";
@@ -132,20 +133,23 @@ buttons.forEach((button) =>
         display.innerText += button.innerText;
         num1 += button.innerText;
     }
-    else if(button.textContent === "*" && operatorCheck === false || button.textContent === "+"|| button.textContent === "-"|| button.textContent === "/")
+    else if((button.textContent === "*"|| button.textContent === "+"|| button.textContent === "-"|| button.textContent === "/") && operator.length < 1 && num1 !== "")
     {
         display.innerText += button.innerText;
         operator += button.innerText;
         num1Check = true;
         num2Check = false;
-        
-        console.log(operator)
         console.log(operator.length);
     }
-    else if(button.textContent !== "=" && !num2Check && num1)
+    else if(button.textContent !== "=" && button.textContent !== "*" && button.textContent !== "+" && button.textContent !== "-" && button.textContent !== "/"  && button.textContent !== "=" && button.textContent !== "clear" && !num2Check && num1 )
     {
         display.innerText += button.innerText;
         num2 += button.innerText;
+    }
+    else if(answer !== "" && button.textContent !== "=" && button.textContent !== "*" && button.textContent !== "+" && button.textContent !== "-" && button.textContent !== "/")
+    {
+        clear();
+        
     }
     
     
